@@ -12,9 +12,9 @@ public class FoundationService {
     @Autowired
     private FoundationRepository foundationRepository;
 
-    public List<Foundation> getAllFoundations() {
+    public List<FoundationModel> getAllFoundations() {
         try {
-            List<Foundation> foundations = new ArrayList<>(foundationRepository.findAll());
+            List<FoundationModel> foundations = new ArrayList<>(foundationRepository.findAll());
 
             if (foundations.isEmpty()) {
                 return null;
@@ -27,19 +27,19 @@ public class FoundationService {
         }
     }
 
-    public Optional<Foundation> getFoundationById(Long id) {
+    public Optional<FoundationModel> getFoundationById(Long id) {
         return foundationRepository.findById(id);
     }
 
-    public Foundation createFoundation(Foundation newFoundationData) {
+    public FoundationModel createFoundation(FoundationModel newFoundationData) {
         return foundationRepository.save(newFoundationData);
     }
 
-    public Foundation updateFoundation(Long id, Foundation newFoundationData) {
-        Optional<Foundation> existingFoundation = foundationRepository.findById(id);
+    public FoundationModel updateFoundation(Long id, FoundationModel newFoundationData) {
+        Optional<FoundationModel> existingFoundation = foundationRepository.findById(id);
 
         if (existingFoundation.isPresent()) {
-            Foundation updatedFoundation = existingFoundation.get();
+            FoundationModel updatedFoundation = existingFoundation.get();
 
             if (newFoundationData.getName() != null) updatedFoundation.setName(updatedFoundation.getName());
             if (newFoundationData.getEmail() != null) updatedFoundation.setEmail(updatedFoundation.getEmail());

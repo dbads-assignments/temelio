@@ -12,7 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class Foundation {
+public class FoundationModel {
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

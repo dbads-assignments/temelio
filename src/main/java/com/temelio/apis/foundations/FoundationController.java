@@ -10,15 +10,15 @@ import java.util.Optional;
 
 @RestController()
 @RequestMapping("/foundation")
-public class Controller {
+public class FoundationController {
 
     @Autowired
     private FoundationService foundationService;
 
     @GetMapping("")
-    public ResponseEntity<List<Foundation>> getAllFoundations() {
+    public ResponseEntity<List<FoundationModel>> getAllFoundations() {
         try {
-            List<Foundation> foundations = foundationService.getAllFoundations();
+            List<FoundationModel> foundations = foundationService.getAllFoundations();
 
             if (foundations == null) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -33,9 +33,9 @@ public class Controller {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Optional<Foundation>> getFoundationById(@PathVariable Long id) {
+    public ResponseEntity<Optional<FoundationModel>> getFoundationById(@PathVariable Long id) {
         try {
-            Optional<Foundation> foundation = foundationService.getFoundationById(id);
+            Optional<FoundationModel> foundation = foundationService.getFoundationById(id);
 
             if (foundation.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -50,9 +50,9 @@ public class Controller {
     }
 
     @PostMapping("")
-    public ResponseEntity<Foundation> createFoundation(@RequestBody Foundation newFoundationData) {
+    public ResponseEntity<FoundationModel> createFoundation(@RequestBody FoundationModel newFoundationData) {
         try {
-            Foundation foundation = foundationService.createFoundation(newFoundationData);
+            FoundationModel foundation = foundationService.createFoundation(newFoundationData);
 
             return new ResponseEntity<>(foundation, HttpStatus.OK);
         } catch (Exception exception) {
@@ -63,9 +63,9 @@ public class Controller {
     }
 
     @PostMapping("{id}")
-    public ResponseEntity<Foundation> updateFoundation(@PathVariable Long id, @RequestBody Foundation newFoundationData) {
+    public ResponseEntity<FoundationModel> updateFoundation(@PathVariable Long id, @RequestBody FoundationModel newFoundationData) {
         try {
-            Foundation updatedFoundation = foundationService.updateFoundation(id, newFoundationData);
+            FoundationModel updatedFoundation = foundationService.updateFoundation(id, newFoundationData);
             if (updatedFoundation != null) return new ResponseEntity<>(updatedFoundation, HttpStatus.OK);
 
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

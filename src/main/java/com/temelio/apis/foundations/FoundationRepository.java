@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface FoundationRepository extends JpaRepository<Foundation, Long> {
+public interface FoundationRepository extends JpaRepository<FoundationModel, Long> {
 }
