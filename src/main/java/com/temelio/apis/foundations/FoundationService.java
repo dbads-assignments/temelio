@@ -46,6 +46,7 @@ public class FoundationService {
             if (newFoundationData.getAddress() != null) updatedFoundation.setAddress(updatedFoundation.getAddress());
 //            if (newFoundationData.getEstablishedDate() != null) updatedFoundation.setEstablishedDate(updatedFoundation.getEstablishedDate());
 
+            foundationRepository.save(updatedFoundation);
             return updatedFoundation;
         }
 
