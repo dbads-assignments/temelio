@@ -1,4 +1,4 @@
-package com.temelio.apis.foundations;
+package com.temelio.apis.nonprofits;
 
 import com.temelio.apis.users.UserModel;
 import jakarta.persistence.*;
@@ -7,13 +7,13 @@ import lombok.*;
 import java.util.Date;
 
 @Entity
-@Table(name="foundations")
+@Table(name="nonprofits")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
-public class FoundationModel {
+public class NonprofitModel {
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
