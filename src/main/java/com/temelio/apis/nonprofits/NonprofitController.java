@@ -17,6 +17,17 @@ public class NonprofitController {
     @Autowired
     private NonprofitService nonProfitService;
 
+    @GetMapping("/getSentEmails")
+    public ResponseEntity<List<SentEmailsModel>> getSendEmails() {
+        try {
+            return new ResponseEntity<>(nonProfitService.getAllSentEmails(), HttpStatus.OK);
+        } catch (Exception exception) {
+            // logging for exception into error.logs
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PostMapping("/sendEmail")
     public ResponseEntity<String> sendEmailToNonprofits(@RequestBody List<String> emails) {
         try {

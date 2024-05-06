@@ -13,18 +13,31 @@ public class NonprofitService {
     @Autowired
     private NonprofitRepository nonprofitRepository;
 
-    public String sendEmailsToNonprofits(List<String> emails) {
+    @Autowired
+    private SentEmailsRepository sentEmailsRepository;
+
+    public List<SentEmailsModel> getAllSentEmails() {
+        return sentEmailsRepository.findAll();
+    }
+
+    public void sendEmailsToNonprofits(List<String> emails) {
         String emailTemplate = "Sending money to nonprofit %s at address %s";
 
         List<NonprofitModel> nonprofits = nonprofitRepository.findByEmailIn(emails);
 
+        List<SentEmailsModel> sentEmails = new ArrayList<>(List.of());
         for (NonprofitModel nonprofit : nonprofits) {
             String email = emailTemplate.formatted(nonprofit.getName(), nonprofit.getAddress());
             System.out.println("Sending email to " + nonprofit.getEmail());
             System.out.println(email);
+
+            SentEmailsModel sentEmail = new SentEmailsModel();
+            sentEmail.setEmailContent(email);
+            sentEmail.setNonprofitEmail(email);
+            sentEmails.add(sentEmail);
         }
 
-        return "sending emails ..";
+        sentEmailsRepository.saveAll(sentEmails);
     }
 
     public List<NonprofitModel> getAllNonprofits() {
