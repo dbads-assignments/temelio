@@ -1,5 +1,6 @@
 package com.temelio.apis.nonprofits;
 
+import com.temelio.apis.users.UserModel;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,11 @@ public class NonprofitModel {
 
     @Column(unique = true)
     private String email;
+    private String phone;
     private String address;
     private Date establishedDate;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private UserModel manager;
 }
