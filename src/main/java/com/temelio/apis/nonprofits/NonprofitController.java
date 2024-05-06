@@ -28,7 +28,7 @@ public class NonprofitController {
         }
     }
 
-    @PostMapping("/sendEmail")
+    @PostMapping("/sendEmails")
     public ResponseEntity<String> sendEmailToNonprofits(@RequestBody List<String> emails) {
         try {
             nonProfitService.sendEmailsToNonprofits(emails);

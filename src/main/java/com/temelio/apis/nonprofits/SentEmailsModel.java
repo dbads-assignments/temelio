@@ -20,4 +20,5 @@ public class SentEmailsModel {
 //    @JoinColumn(name="user_id")
 //    private UserModel sentBy;
     private String emailContent;
+    private String nonProfitName;
 }

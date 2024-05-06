@@ -33,7 +33,8 @@ public class NonprofitService {
 
             SentEmailsModel sentEmail = new SentEmailsModel();
             sentEmail.setEmailContent(email);
-            sentEmail.setNonprofitEmail(email);
+            sentEmail.setNonprofitEmail(nonprofit.getEmail());
+            sentEmail.setNonProfitName(nonprofit.getName());
             sentEmails.add(sentEmail);
         }
 
